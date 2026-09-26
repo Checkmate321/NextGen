@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Lesson Library | NextGen Engineering</title>
+  <meta name="description" content="Free engineering lessons for grades 6–12 — CAD, electronics, mechanical design, software, and robotics. Every lesson includes objectives, a materials list, and step-by-step instructions.">
+  <link rel="canonical" href="https://nextgenengineering.org/lessons.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NextGen Engineering">
+  <meta property="og:title" content="Lesson Library | NextGen Engineering">
+  <meta property="og:description" content="Free, step-by-step engineering lessons for grades 6–12.">
+  <meta property="og:url" content="https://nextgenengineering.org/lessons.html">
+  <meta property="og:image" content="https://nextgenengineering.org/files/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3B464A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="files/images/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="btn btn--primary visually-hidden" href="#main">Skip to content</a>
+
+  <div data-include="header"></div>
+
+  <main id="main">
+
+    <section class="section section--dark section--tight">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Lesson library</span>
+          <h1>Every lesson we teach, free to use.</h1>
+          <p>
+            Each one lists what students will learn, exactly what you need, and the steps to
+            run it &mdash; whether we are in the room or not.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <form class="filters" role="search" onsubmit="return false">
+          <div class="field filters__search">
+            <label for="filter-search">Search</label>
+            <input type="search" id="filter-search" placeholder="Try &quot;arduino&quot; or &quot;gears&quot;" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="filter-subject">Subject</label>
+            <select id="filter-subject">
+              <option value="">All subjects</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filter-grade">Grade band</label>
+            <select id="filter-grade">
+              <option value="">All grades</option>
+            </select>
+          </div>
+
+          <button type="button" class="filters__reset" id="filter-reset">Clear</button>
+        </form>
+
+        <p class="results-count" id="results-count" role="status" aria-live="polite">Loading lessons&hellip;</p>
+
+        <div class="grid grid--3" id="lesson-grid"></div>
+
+      </div>
+    </section>
+
+    <section class="section section--dark cta section--tight">
+      <div class="container">
+        <div class="section-head prose">
+          <h2>Want one of these taught in person?</h2>
+          <p>We bring the parts, the tools, and the instructors &mdash; at no cost to your school.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--outline btn--lg" href="signup.html?form=presentation">Request a presentation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="footer"></div>
+
+  <script src="script.js"></script>
+  <script src="lessons.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#fff}iframe{border:0;display:block}</style>
+<body><script>
+const q = new URLSearchParams(location.search);
+const f = document.createElement('iframe');
+f.style.width = (+(q.get('w')||375)) + 'px';
+f.style.height = (+(q.get('h')||9000)) + 'px';
+f.src = q.get('src') || 'index.html';
+document.body.appendChild(f);
+</script>

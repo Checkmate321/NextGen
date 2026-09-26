@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>NextGen Engineering | Engineering education for grades 6–12</title>
+  <meta name="description" content="NextGen Engineering is a 501(c)(3) nonprofit that teaches hands-on engineering to 6th–12th grade students in the Orlando area, and publishes a free lesson library open to everyone.">
+  <link rel="canonical" href="https://nextgenengineering.org/index.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NextGen Engineering">
+  <meta property="og:title" content="NextGen Engineering | Engineering education for grades 6–12">
+  <meta property="og:description" content="Hands-on engineering lessons for middle and high school students in Orlando, plus a free lesson library open to everyone.">
+  <meta property="og:url" content="https://nextgenengineering.org/index.html">
+  <meta property="og:image" content="https://nextgenengineering.org/files/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3B464A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="files/images/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="btn btn--primary visually-hidden" href="#main">Skip to content</a>
+
+  <div data-include="header"></div>
+
+  <main id="main">
+
+    <!-- ================= Hero ================= -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div>
+          <span class="eyebrow">501(c)(3) nonprofit &middot; Orlando, Florida</span>
+          <h1>Engineering, taught by people who are still building.</h1>
+          <p class="hero__lede">
+            NextGen Engineering runs free, hands-on engineering lessons for 6th&ndash;12th
+            grade students across the Orlando area &mdash; and publishes every lesson we
+            write online, so anyone can use them.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--primary btn--lg" href="signup.html">Sign up for a lesson</a>
+            <a class="btn btn--outline btn--lg" href="lessons.html">Browse the lessons</a>
+          </div>
+        </div>
+        <div class="hero__art">
+          <model-viewer
+            class="hero__model"
+            src="files/CAD/nextGenLogo.glb"
+            alt="A slowly rotating 3D model of the NextGen Engineering mark, modeled in CAD."
+            camera-controls
+            touch-action="pan-y"
+            disable-zoom
+            disable-tap
+            auto-rotate
+            auto-rotate-delay="0"
+            rotation-per-second="18deg"
+            interaction-prompt="none"
+            environment-image="neutral"
+            tone-mapping="neutral"
+            shadow-intensity="0.4"
+            exposure="0.72"
+            camera-orbit="35deg 72deg 100%"
+            loading="eager">
+            <!-- Shown until the model is ready, and left in place permanently if
+                 the viewer script never loads (unknown elements still render
+                 their children). Either way the mark is always on screen. -->
+            <svg slot="poster" viewBox="0 0 600 600" aria-hidden="true">
+              <use href="#nextgen-mark"></use>
+            </svg>
+          </model-viewer>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= What we do ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What we do</span>
+          <h2>How we reach students.</h2>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card">
+            <span class="feature__num" aria-hidden="true">1</span>
+            <h3>In-person lessons</h3>
+            <p>
+              We come to schools, libraries, and community centers around Orlando with the
+              parts, tools, and boards already in hand. Students build something real in a
+              single session &mdash; no lab required on your end.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="feature__num" aria-hidden="true">2</span>
+            <h3>A free lesson library</h3>
+            <p>
+              Every lesson we teach gets written up and posted here, with materials lists and
+              step-by-step instructions. Teachers, parents, and students can run them
+              independently, anywhere.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="feature__num" aria-hidden="true">3</span>
+            <h3>Built for grades 6&ndash;12</h3>
+            <p>
+              Every lesson is tagged by grade band and difficulty, so a sixth grader and a
+              high school senior each get something that actually fits them.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= About / mission ================= -->
+    <section class="section section--surface" id="about">
+      <div class="container">
+        <div class="grid grid--2">
+          <div class="prose">
+            <span class="eyebrow">Our mission</span>
+            <h2>Engineering should not be something you discover in college.</h2>
+            <p>
+              Most students meet engineering for the first time in a college intro course, long
+              after they have already decided what they are and are not good at. By then, the
+              question is no longer &ldquo;is this interesting?&rdquo; but &ldquo;am I already
+              behind?&rdquo;
+            </p>
+            <p>
+              NextGen Engineering exists to move that first encounter about eight years earlier
+              &mdash; and to make it a good one. Not a lecture about engineering, but an
+              afternoon spent actually doing it.
+            </p>
+          </div>
+
+          <div class="prose">
+            <span class="eyebrow">Our story</span>
+            <h2>Started by students, for students.</h2>
+            <p>
+              NextGen Engineering was founded by high school students who had spent years in
+              robotics, CAD, and embedded electronics, and kept running into the same thing:
+              younger students were curious and capable, but had nowhere to start.
+            </p>
+            <p>
+              So we started teaching. What began as a handful of sessions became a curriculum,
+              and the curriculum became this library. We are still students ourselves, which
+              turns out to be the point &mdash; we remember exactly which parts were confusing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= What makes us different ================= -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid--2">
+          <div class="prose">
+            <span class="eyebrow">What makes us different</span>
+            <h2>Every session ends with something built.</h2>
+            <p>
+              A lot of STEM outreach is a slideshow and a demo. Ours is not. Students leave
+              having modeled a part, wired a circuit, or made a motor turn under their own
+              instructions.
+            </p>
+          </div>
+
+          <ul class="checklist">
+            <li><strong>Always free.</strong> No fees for students, schools, or families &mdash; ever.</li>
+            <li><strong>We bring everything.</strong> Boards, components, tools, and laptops if you need them.</li>
+            <li><strong>Open curriculum.</strong> Every lesson is published here for anyone to use or adapt.</li>
+            <li><strong>Real tools.</strong> Students use the same CAD and hardware that working engineers use.</li>
+            <li><strong>Small groups.</strong> We cap sessions so every student gets hands on the hardware.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Impact ================= -->
+    <section class="section section--dark section--tight">
+      <div class="container">
+        <div class="grid grid--4">
+          <div class="stat">
+            <span class="stat__num">250+</span>
+            <span class="stat__label">Students taught</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">12</span>
+            <span class="stat__label">Lessons published</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">8</span>
+            <span class="stat__label">Schools visited</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">$0</span>
+            <span class="stat__label">Cost to families</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Featured lessons ================= -->
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">From the library</span>
+          <h2>Start with one of these.</h2>
+          <p>Every lesson is free, self-contained, and written to be run without us in the room.</p>
+        </div>
+
+        <div class="grid grid--3" id="featured-grid" data-featured="3">
+          <p class="results-count">Loading lessons&hellip;</p>
+        </div>
+
+        <div class="btn-row" style="margin-top: var(--s-6)">
+          <a class="btn btn--outline" href="lessons.html">See all lessons</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Team ================= -->
+    <section class="section section--surface" id="team">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Who we are</span>
+          <h2>The people teaching the lessons.</h2>
+        </div>
+
+        <div class="grid grid--4">
+          <article class="card member">
+            <div class="member__avatar">
+              <span aria-hidden="true">AC</span>
+              <img src="files/images/team/andrew-chai.jpg" alt="Andrew Chai" loading="lazy" onerror="this.remove()">
+            </div>
+            <h3>Andrew Chai</h3>
+            <span class="member__role">Founder</span>
+            <p>I am a junior at Orlando Science High School, with a favorite subject of robotics. I enjoy playing sandbox games and reading.</p>
+          </article>
+
+          <article class="card member">
+            <div class="member__avatar">
+              <span aria-hidden="true">BC</span>
+              <img src="files/images/team/brayden-choi.jpg" alt="Brayden Choi" loading="lazy" onerror="this.remove()">
+            </div>
+            <h3>Brayden Choi</h3>
+            <span class="member__role">Founder</span>
+            <p>I am a junior at Orlando Science High School, who enjoys the math side of physics. Other than that, he also enjoys soccer and video games.</p>
+          </article>
+
+          <article class="card member">
+            <div class="member__avatar">
+              <span aria-hidden="true">SS</span>
+              <img src="files/images/team/shriyans-sahu.jpg" alt="Shriyans Sahu" loading="lazy" onerror="this.remove()">
+            </div>
+            <h3>Shriyans Sahu</h3>
+            <span class="member__role">Founder</span>
+            <p>I am a junior at Orlando Science High School that is interested in engineering. I enjoy playing sports and hanging out with friends.</p>
+          </article>
+
+          <article class="card member">
+            <div class="member__avatar">
+              <span aria-hidden="true">NL</span>
+              <img src="files/images/team/nathan-lamchamkee.jpg" alt="Nathan Lamchamkee" loading="lazy" onerror="this.remove()">
+            </div>
+            <h3>Nathan Lamchamkee</h3>
+            <span class="member__role">Webmaster</span>
+            <p>I am a junior at Orlando Science High School who loves mechanical engineering, hockey, videography, freestyle soccer, and eating.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 501(c)(3) ================= -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="legal-box">
+          <svg class="legal-box__mark" aria-hidden="true" focusable="false"><use href="#nextgen-mark"></use></svg>
+          <p>
+            <strong>NextGen Engineering is a registered 501(c)(3) nonprofit organization.</strong>
+            Contributions are tax-deductible to the extent permitted by law. EIN:
+            <strong>00-0000000</strong>. Questions about our filings or programs? Email
+            <a href="mailto:hello@nextgenengineering.org">hello@nextgenengineering.org</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="section section--dark cta">
+      <div class="container">
+        <div class="section-head prose">
+          <h2>Bring NextGen Engineering to your students.</h2>
+          <p>
+            Whether you are a student who wants in or a teacher with a room full of them,
+            it starts with the same form.
+          </p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary btn--lg" href="signup.html">Sign up as a student</a>
+          <a class="btn btn--outline btn--lg" href="signup.html?form=presentation">Request a presentation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="footer"></div>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
+  <script src="script.js"></script>
+  <script src="lessons.js"></script>
+</body>
+</html>

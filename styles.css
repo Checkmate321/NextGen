@@ -1,0 +1,1159 @@
+/* ==========================================================================
+   NextGen Engineering — global stylesheet
+   Palette is three colors only. Every value below resolves to one of them.
+   ========================================================================== */
+
+:root {
+  /* --- The two brand colors --------------------------------------------- */
+  --dark:  #3B464A;   /* Limed Spruce */
+  --light: #D6EAF0;   /* Jagged Ice   */
+
+  /* --- Steps derived from the two above, never new hues ----------------- */
+  /* light + dark */
+  --surface:        color-mix(in srgb, var(--light) 94%, var(--dark));
+  --surface-2:      color-mix(in srgb, var(--light) 86%, var(--dark));
+  /* dark + light */
+  --dark-soft:      color-mix(in srgb, var(--dark) 88%, var(--light));
+  --muted:          color-mix(in srgb, var(--dark) 70%, var(--light));
+  /* translucent inks — one per hue, alpha is the only variable */
+  --border:         color-mix(in srgb, var(--dark) 14%, transparent);
+  --border-on-dark: color-mix(in srgb, var(--light) 22%, transparent);
+  --shadow-ink:     color-mix(in srgb, var(--dark) 10%, transparent);
+
+  --shadow-sm:  0 1px 2px   var(--shadow-ink);
+  --shadow:     0 2px 6px   var(--shadow-ink);
+  --shadow-lg:  0 10px 28px var(--shadow-ink);
+
+  /* --- Type ------------------------------------------------------------- */
+  --font: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-xs:   0.8125rem;
+  --fs-sm:   0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-lg:   1.25rem;
+  --fs-xl:   1.625rem;
+  --fs-2xl:  2.125rem;
+  --fs-3xl:  3rem;
+
+  /* --- Space ------------------------------------------------------------ */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+
+  /* --- Shape ------------------------------------------------------------ */
+  --radius:    10px;
+  --radius-lg: 16px;
+
+  /* The chamfer is the brand's one structural motif: a 45deg cut taken off the
+     top-left and bottom-right of a rounded box. Three sizes so the cut stays
+     in proportion as the thing it cuts gets bigger. */
+  --chamfer-2xs: 0.45rem; /* tags and other type-sized chips */
+  --chamfer-xs: 1rem;     /* form controls, icon buttons, step markers */
+  --chamfer-sm: 1.5rem;   /* buttons, thumbnails, avatars */
+  --chamfer-md: 2.25rem;  /* cards, panels, status blocks */
+  --chamfer-lg: 3rem;     /* video, wide callout panels */
+  --max-width: 1100px;
+  --header-h:  68px;
+}
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--fs-base);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--dark);
+  background: var(--light);
+  -webkit-font-smoothing: antialiased;
+  /* Long unbroken strings (emails, URLs, part numbers) wrap instead of
+     forcing the whole page to scroll sideways on a phone. */
+  overflow-wrap: break-word;
+}
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3, h4 {
+  margin: 0 0 var(--s-4);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-3xl); }
+h2 { font-size: var(--fs-2xl); }
+h3 { font-size: var(--fs-xl); }
+h4 { font-size: var(--fs-lg); }
+
+p  { margin: 0 0 var(--s-4); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--dark);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--muted); }
+
+ul, ol { margin: 0 0 var(--s-4); padding-left: var(--s-5); }
+li + li { margin-top: var(--s-2); }
+
+hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-6) 0; }
+
+/* Space Grotesk carries the whole site — buttons and fields inherit it too. */
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* Keyboard focus is visible everywhere. */
+:focus-visible {
+  outline: 3px solid var(--dark);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Layout primitives
+   -------------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--s-5);
+}
+
+.section { padding-block: var(--s-8); }
+.section--tight { padding-block: var(--s-7); }
+
+/* Full-bleed dark band. Text inside flips to --light. */
+.section--dark {
+  background: var(--dark);
+  color: var(--light);
+}
+.section--dark a { color: var(--light); }
+.section--dark a:hover { color: var(--light); }
+
+/* Same ground as <body>. The band exists for rhythm/padding, not for a
+   color change — cards are what carry the tint here. */
+.section--surface { background: var(--light); }
+
+.section-head { max-width: 62ch; margin-bottom: var(--s-6); }
+.section-head p { color: var(--muted); font-size: var(--fs-lg); }
+.section--dark .section-head p { color: color-mix(in srgb, var(--light) 82%, var(--dark)); }
+
+.eyebrow {
+  display: block;
+  margin-bottom: var(--s-2);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+.section--dark .eyebrow,
+.hero .eyebrow,
+.lesson-hero .eyebrow { color: var(--light); opacity: 0.75; }
+
+.grid { display: grid; gap: var(--s-5); }
+/* Without this, a grid item's automatic minimum size is its content, so one
+   wide child can blow the track out past the viewport. */
+.grid > * { min-width: 0; }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* --------------------------------------------------------------------------
+   Chamfer motif
+
+   One shape, applied at every scale. clip-path over a rounded border box: the
+   diagonal slices straight through two of the four rounded corners. On a
+   filled element it cuts the fill; on a bordered one it cuts the border too --
+   a border is only painted around the element's own box, so nothing is drawn
+   along the diagonal and the outline reads as open at those corners.
+
+   Every chamfered thing sets its own --chamfer and shares this one polygon.
+   Add `.chamfered` to cut anything else, an <img> included.
+   -------------------------------------------------------------------------- */
+
+.chamfered,
+.btn,
+.card,
+.tag,
+.tier__badge,
+.sponsor-logo,
+.nav__toggle,
+.feature__num,
+.member__avatar,
+.step::before,
+.filters,
+.filters__reset,
+.lesson-card,
+.lesson-card__thumb,
+.download-list a,
+.tabs,
+.tab,
+.field input,
+.field select,
+.field textarea,
+.legal-box,
+.video-wrap,
+.form-status,
+.empty-state {
+  --chamfer: var(--chamfer-md);
+  border-radius: var(--radius-lg);
+  clip-path: polygon(
+    var(--chamfer) 0,
+    100% 0,
+    100% calc(100% - var(--chamfer)),
+    calc(100% - var(--chamfer)) 100%,
+    0 100%,
+    0 var(--chamfer)
+  );
+}
+
+/* clip-path clips the focus ring along with everything else, so on keyboard
+   focus the cut is dropped: the element closes into a plain rounded rectangle
+   and the ring becomes visible again. */
+.chamfered:focus-visible,
+.btn:focus-visible,
+.nav__toggle:focus-visible,
+.lesson-card:focus-visible {
+  clip-path: none;
+}
+
+/* Text fields are different: they match :focus-visible on plain mouse clicks
+   too, so un-chamfering them would make every field visibly change shape when
+   clicked. Instead the ring is drawn INSIDE the box with a negative offset,
+   where the clip cannot reach it, and the cut stays put. */
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible,
+.filters__reset:focus-visible,
+.tab:focus-visible,
+.download-list a:focus-visible {
+  outline: 2px solid var(--dark);
+  outline-offset: -5px;
+  border-color: var(--dark);
+}
+
+/* Note: a clipped box cannot cast a box-shadow -- the shadow paints outside
+   the clip and is thrown away. Chamfered surfaces carry a border instead and
+   lift on hover with border-color. See .lesson-card below. */
+
+/* Size the cut to the thing being cut, so the angle stays readable from a
+   24px tag up to a full-width video. */
+.tag,
+.tier__badge                             { --chamfer: var(--chamfer-2xs); }
+.nav__toggle,
+.feature__num,
+.step::before,
+.filters__reset,
+.download-list a,
+.tab,
+.field input,
+.field select,
+.field textarea                          { --chamfer: var(--chamfer-xs); }
+.btn,
+.member__avatar,
+.sponsor-logo,
+.lesson-card__thumb                      { --chamfer: var(--chamfer-sm); }
+.legal-box,
+.video-wrap                              { --chamfer: var(--chamfer-lg); }
+
+.chamfer--xs { --chamfer: var(--chamfer-xs); }
+.chamfer--sm { --chamfer: var(--chamfer-sm); }
+.chamfer--lg { --chamfer: var(--chamfer-lg); }
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+/* Shape comes from the chamfer motif above; this is everything else. */
+.btn {
+  --chamfer: var(--chamfer-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: 0.7rem 1.35rem;
+  border: 2px solid transparent;
+  /* 17px semibold keeps Jagged Ice on Eastern Blue in large-text contrast range. */
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .25s ease, border-color .25s ease, color .25s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.btn--primary { background: var(--dark); border-color: var(--dark); color: var(--light); }
+.btn--primary:hover { background: var(--dark-soft); border-color: var(--dark-soft); color: var(--light); }
+
+.btn--outline {
+  background: transparent;
+  border-color: currentColor;
+  color: var(--dark);
+}
+.btn--outline:hover { color: var(--muted); }
+
+/* On a dark band the outline flips to the light color for contrast.
+   currentColor means the border follows the text automatically. */
+.section--dark .btn--outline,
+.hero .btn--outline,
+.lesson-hero .btn--outline,
+.site-header .btn--outline { color: var(--light); }
+.section--dark .btn--outline:hover,
+.hero .btn--outline:hover,
+.lesson-hero .btn--outline:hover,
+.site-header .btn--outline:hover { color: var(--surface-2); }
+
+.btn--lg { padding: 0.9rem 1.75rem; font-size: var(--fs-lg); }
+.btn--block { width: 100%; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+
+/* --------------------------------------------------------------------------
+   Cards
+   -------------------------------------------------------------------------- */
+
+/* Chamfered, so no box-shadow: a clipped box throws its shadow away. The
+   border carries the edge and the hover state instead. */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--s-5);
+}
+
+a.card, .card--link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .15s ease, border-color .15s ease;
+}
+a.card:hover, .card--link:hover {
+  transform: translateY(-2px);
+  border-color: var(--dark);
+  color: inherit;
+}
+
+.card h3 { margin-bottom: var(--s-2); }
+.card p  { color: var(--muted); font-size: var(--fs-sm); }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--dark);
+  border-radius: var(--radius);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--dark);
+}
+
+/* --------------------------------------------------------------------------
+   Site header
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--dark);
+  color: var(--light);
+  border-bottom: 1px solid var(--border-on-dark);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-right: auto;
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.brand:hover { color: var(--light); }
+
+/* The mark inherits `color`, so it recolors with the brand text. */
+.brand__mark { width: 38px; height: 38px; flex: none; color: currentColor; }
+
+.brand__name { display: flex; flex-direction: column; line-height: 1.05; }
+.brand__name strong { font-size: 1.05rem; letter-spacing: 0.01em; }
+.brand__name span {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.nav { display: flex; align-items: center; gap: var(--s-5); }
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav__list li { margin: 0; }
+
+.nav__link {
+  position: relative;
+  padding-block: var(--s-2);
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav__link:hover { color: var(--light); }
+
+/* Active page marker — an underline plus weight, since the palette has no
+   accent color to tint the current link with. */
+.nav__link.is-active { font-weight: 700; }
+.nav__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--light);
+}
+
+.nav__toggle {
+  display: none;
+  width: 44px; height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border-on-dark);
+  border-radius: var(--radius);
+  color: var(--light);
+  cursor: pointer;
+}
+.nav__toggle-bar {
+  display: block;
+  width: 18px; height: 2px;
+  margin: 4px auto;
+  background: currentColor;
+  transition: transform .2s ease, opacity .2s ease;
+}
+/* The bars are children 2-4: the button's first child is the visually-hidden
+   "Menu" label that gives it an accessible name. */
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) { transform: translateY(6px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) { opacity: 0; }
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(4) { transform: translateY(-6px) rotate(-45deg); }
+
+/* --------------------------------------------------------------------------
+   Site footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--dark);
+  color: var(--light);
+  padding-block: var(--s-6);
+}
+
+.site-footer a { color: var(--light); text-decoration: none; }
+.site-footer a:hover { color: var(--light); text-decoration: underline; }
+
+/* One single line at every width — contact, copyright, nonprofit status.
+   Sizes are in cqi (1cqi = 1% of .footer__inner's width), so the row is a
+   fixed multiple of the container no matter the screen: it scales down
+   instead of wrapping. The min() caps growth on wide screens. */
+.footer__inner {
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1.6cqi;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.footer__email {
+  font-size: min(var(--fs-lg), 1.9cqi);
+  font-weight: 600;
+  order: 2;   /* centered: copyright, email, nonprofit status */
+}
+
+/* display: contents lifts the two paragraphs into the flex row above, so all
+   three items share one line. */
+.footer__legal { display: contents; }
+.footer__legal p:first-child { order: 1; }
+.footer__legal p:last-child  { order: 3; }
+.footer__legal p {
+  margin: 0;
+  font-size: min(var(--fs-xs), 1.25cqi);
+  color: color-mix(in srgb, var(--light) 72%, var(--dark));
+}
+
+/* --------------------------------------------------------------------------
+   Forms (base styles — Phase 4 builds on these)
+   -------------------------------------------------------------------------- */
+
+.field { margin-bottom: var(--s-4); }
+
+.field label {
+  display: block;
+  margin-bottom: var(--s-2);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  background: var(--surface-2);
+  border: 1px solid color-mix(in srgb, var(--dark) 25%, transparent);
+  border-radius: var(--radius);
+  font-size: var(--fs-base);
+}
+.field input:hover,
+.field select:hover,
+.field textarea:hover { border-color: var(--dark); }
+/* The native resize grabber sits in the bottom-right corner -- precisely the
+   corner the chamfer removes -- and a clipped area takes no pointer events, so
+   the grabber would be dead. Drop it and give the field more room instead. */
+.field textarea { min-height: 9rem; resize: none; }
+
+.field__hint { margin-top: var(--s-2); font-size: var(--fs-xs); color: var(--muted); }
+
+.required-star { color: var(--dark); }
+
+/* Web3Forms honeypot — must stay in the DOM but never be seen. */
+.botcheck { display: none !important; }
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  :root { --fs-3xl: 2.375rem; --fs-2xl: 1.875rem; --s-8: 3.5rem; }
+  .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .nav__toggle { display: block; }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--s-3) var(--s-5) var(--s-5);
+    background: var(--dark);
+    border-bottom: 1px solid var(--border-on-dark);
+    box-shadow: var(--shadow-lg);
+  }
+  .nav[hidden] { display: none; }
+
+  .nav__list { flex-direction: column; align-items: stretch; gap: 0; }
+  .nav__list li { border-top: 1px solid var(--border-on-dark); }
+  .nav__link { display: block; padding-block: var(--s-3); }
+  .nav__link.is-active::after { display: none; }
+  .nav .btn { margin-top: var(--s-4); }
+}
+
+@media (max-width: 600px) {
+  :root { --fs-3xl: 2rem; --fs-2xl: 1.625rem; }
+  .container { padding-inline: var(--s-4); }
+  .grid--2, .grid--3 { grid-template-columns: 1fr; }
+  /* Stats stay two-up -- stacking four of them makes the band absurdly tall. */
+  .grid--4 { grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+  .btn-row .btn { width: 100%; }
+  .legal-box { flex-direction: column; align-items: flex-start; }
+}
+
+/* Small phones (iPhone SE and down). Tighten the frame and drop anything that
+   is decoration rather than content. */
+@media (max-width: 420px) {
+  :root {
+    --fs-3xl: 1.75rem;
+    --fs-2xl: 1.5rem;
+    --fs-xl:  1.25rem;
+    --s-8: 2.75rem;
+    --s-7: 2rem;
+  }
+
+  .container { padding-inline: var(--s-4); }
+  .section-head { margin-bottom: var(--s-5); }
+
+  /* The brand tagline is wide-tracked and crowds the menu button. */
+  .brand__name span { display: none; }
+  .brand__mark { width: 32px; height: 32px; }
+
+  .hero__art { width: min(260px, 72%); justify-self: center; }
+
+  .card, .lesson-card__body, .form-status, .empty-state { padding: var(--s-4); }
+  .filters { padding: var(--s-4); }
+
+  /* Scale the whole motif down together so it stays in proportion. */
+  :root { --chamfer-sm: 1.15rem; --chamfer-md: 1.6rem; --chamfer-lg: 2rem; }
+
+  .step { padding-left: 2.75rem; }
+  .step::before { width: 2rem; height: 2rem; }
+  .step:not(:last-child)::after { left: calc(1rem - 1px); top: 2.25rem; }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* ==========================================================================
+   Page components (Phases 2–5)
+   ========================================================================== */
+
+/* --- Hero --------------------------------------------------------------- */
+
+.hero {
+  background: var(--dark);
+  color: var(--light);
+  padding-block: var(--s-8);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  align-items: center;
+  gap: var(--s-7);
+}
+
+.hero h1 { margin-bottom: var(--s-4); }
+
+.hero__lede {
+  max-width: 46ch;
+  font-size: var(--fs-lg);
+  color: color-mix(in srgb, var(--light) 84%, var(--dark));
+}
+
+.hero .btn-row { margin-top: var(--s-6); }
+
+/* The mark doubles as the hero illustration — a rotating CAD model, with the
+   flat SVG standing in as poster and as the no-JS fallback. */
+.hero__art { justify-self: center; width: min(520px, 100%); color: var(--light); }
+.hero__art svg { width: 100%; height: auto; opacity: 0.9; }
+
+.hero__model {
+  display: block;
+  width: 100%;
+  /* model-viewer ships its own `height: 150px`, which beats aspect-ratio
+     unless height is explicitly handed back to auto. */
+  height: auto;
+  aspect-ratio: 1;
+  background: transparent;
+  /* model-viewer's poster and progress bar default to white; both are pushed
+     back onto the palette so the dark hero stays unbroken. */
+  --poster-color: transparent;
+  --progress-bar-color: var(--dark);
+  --progress-mask: transparent;
+}
+
+/* The poster SVG has to be positioned by us — the slot is a bare container. */
+.hero__model svg[slot="poster"] {
+  width: 100%;
+  height: 100%;
+  background: var(--dark);
+}
+
+/* Grabbing the model shouldn't look like text selection. */
+.hero__model:not([disable-tap]) { cursor: grab; }
+.hero__model:active { cursor: grabbing; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__model { --progress-bar-color: transparent; }
+}
+
+/* --- Stats -------------------------------------------------------------- */
+
+.stat { text-align: center; }
+
+.stat__num {
+  display: block;
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--dark);
+}
+.section--dark .stat__num { color: var(--light); }
+
+.stat__label {
+  display: block;
+  margin-top: var(--s-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--muted);
+}
+.section--dark .stat__label { color: color-mix(in srgb, var(--light) 78%, var(--dark)); }
+
+/* --- Icon / numbered feature cards -------------------------------------- */
+
+.feature__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  margin-bottom: var(--s-4);
+  border: 2px solid var(--dark);
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--dark);
+}
+
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-top: var(--s-3);
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 10px; height: 10px;
+  border: 2px solid var(--dark);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* --- Team --------------------------------------------------------------- */
+
+.member { text-align: center; }
+
+.member__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px; height: 84px;
+  margin: 0 auto var(--s-4);
+  border: 2px solid var(--dark);
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--dark);
+}
+
+.member__avatar { position: relative; overflow: hidden; }
+
+.member__avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.member h3 { margin-bottom: var(--s-1); font-size: var(--fs-lg); }
+
+.member__role {
+  display: block;
+  margin-bottom: var(--s-3);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+/* --- Legal / EIN block -------------------------------------------------- */
+
+.legal-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-5);
+  padding: var(--s-5);
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+.legal-box__mark { width: 56px; height: 56px; flex: none; color: var(--dark); }
+.legal-box p { flex: 1 1 20rem; font-size: var(--fs-sm); color: var(--muted); }
+
+/* --- CTA band ----------------------------------------------------------- */
+
+.cta { text-align: center; }
+.cta .section-head { margin-inline: auto; }
+.cta .btn-row { justify-content: center; }
+
+/* --- Lesson filters ----------------------------------------------------- */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--s-4);
+  padding: var(--s-4) var(--s-5);
+  margin-bottom: var(--s-6);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.filters .field { flex: 1 1 12rem; margin-bottom: 0; }
+.filters__search { flex: 2 1 16rem; }
+
+.filters__reset {
+  flex: none;
+  padding: 0.65rem 1rem;
+  background: transparent;
+  border: 1px solid var(--dark);
+  border-radius: var(--radius);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--dark);
+  cursor: pointer;
+}
+.filters__reset:hover { background: var(--dark); color: var(--light); }
+
+.results-count {
+  margin-bottom: var(--s-4);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Lesson cards ------------------------------------------------------- */
+
+/* The card and its thumbnail are both cut, at different sizes, so the motif
+   reads twice at two scales in the same object. */
+.lesson-card { display: flex; flex-direction: column; padding: 0; }
+
+/* Thumbnail falls back to a tinted tile carrying the logo, so a lesson with
+   no artwork yet still looks deliberate rather than broken. */
+.lesson-card__thumb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  background: var(--dark);
+  color: var(--light);
+}
+.lesson-card__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.lesson-card__thumb svg { width: 46%; height: auto; opacity: 0.55; }
+
+.lesson-card__body { display: flex; flex-direction: column; flex: 1; padding: var(--s-5); }
+.lesson-card__body h3 { font-size: var(--fs-lg); }
+.lesson-card__body p { flex: 1; }
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-4);
+  margin-top: var(--s-4);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--muted);
+}
+.meta-row span { display: inline-flex; align-items: center; gap: var(--s-1); }
+
+.card-tags { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-3); }
+
+/* --- Empty / error states ----------------------------------------------- */
+
+.empty-state {
+  padding: var(--s-7) var(--s-5);
+  text-align: center;
+  border: 2px dashed var(--border);
+}
+.empty-state h3 { color: var(--dark); }
+.empty-state p { color: var(--muted); }
+
+/* --- Lesson detail ------------------------------------------------------ */
+
+.lesson-hero { background: var(--dark); color: var(--light); padding-block: var(--s-7); }
+.lesson-hero h1 { margin-bottom: var(--s-3); }
+.lesson-hero .meta-row { color: color-mix(in srgb, var(--light) 80%, var(--dark)); }
+.lesson-hero .tag { border-color: var(--light); color: var(--light); }
+
+.breadcrumb { margin-bottom: var(--s-4); font-size: var(--fs-sm); }
+.breadcrumb a { color: color-mix(in srgb, var(--light) 85%, var(--dark)); }
+
+.lesson-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  align-items: start;
+  gap: var(--s-7);
+}
+
+.lesson-aside { position: sticky; top: calc(var(--header-h) + var(--s-4)); display: grid; gap: var(--s-4); }
+.lesson-aside h3 { font-size: var(--fs-base); }
+
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+
+.step {
+  position: relative;
+  margin: 0 0 var(--s-6);
+  padding-left: 3.5rem;
+}
+.step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem; height: 2.35rem;
+  border: 2px solid var(--dark);
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--dark);
+  background: var(--light);
+}
+.step h3 { margin-bottom: var(--s-2); font-size: var(--fs-lg); }
+
+/* The connecting rail between step markers. */
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(1.175rem - 1px);
+  top: 2.6rem;
+  bottom: calc(var(--s-6) * -1 + 0.5rem);
+  width: 2px;
+  background: var(--border);
+}
+
+.download-list { list-style: none; margin: 0; padding: 0; }
+.download-list li + li { margin-top: var(--s-2); }
+.download-list a {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+.download-list a:hover { border-color: var(--dark); }
+
+.video-wrap {
+  aspect-ratio: 16 / 9;
+  margin-bottom: var(--s-6);
+  background: var(--dark);
+}
+.video-wrap iframe { width: 100%; height: 100%; border: 0; }
+
+/* --- Form tabs ---------------------------------------------------------- */
+
+.tabs {
+  display: flex;
+  gap: var(--s-2);
+  margin-bottom: var(--s-6);
+  padding: var(--s-1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.tab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+.tab:hover { color: var(--dark); }
+.tab[aria-selected="true"] { background: var(--dark); color: var(--light); }
+
+.form-card { max-width: 46rem; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--s-4); }
+.field--full { grid-column: 1 / -1; }
+
+fieldset { margin: 0 0 var(--s-5); padding: 0; border: 0; }
+legend {
+  padding: 0;
+  margin-bottom: var(--s-4);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.check-field {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+.check-field input { width: 1.15rem; height: 1.15rem; margin-top: 0.28rem; flex: none; accent-color: var(--dark); }
+.check-field label { margin: 0; font-weight: 400; font-size: var(--fs-sm); }
+
+/* --- Form status -------------------------------------------------------- */
+
+.form-status {
+  padding: var(--s-5);
+  border: 2px solid var(--dark);
+  background: var(--surface);
+}
+.form-status h3 { color: var(--dark); }
+.form-status--error { border-color: var(--dark); }
+.form-status--error h3 { color: var(--dark); }
+
+.btn[aria-busy="true"] { opacity: 0.65; pointer-events: none; }
+
+/* --- Utilities ---------------------------------------------------------- */
+
+.prose { max-width: 68ch; }
+
+/* Wrap anything too wide to shrink -- a materials table, a wide diagram -- so
+   it scrolls inside its own box rather than widening the page. */
+.table-wrap { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-wrap table { min-width: 34rem; border-collapse: collapse; }
+
+.stack > * + * { margin-top: var(--s-4); }
+.text-center { text-align: center; }
+
+/* --- Responsive (page components) --------------------------------------- */
+
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; gap: var(--s-6); }
+  .hero__art { width: min(360px, 78%); order: -1; justify-self: center; }
+  .lesson-layout { grid-template-columns: 1fr; }
+  .lesson-aside { position: static; }
+}
+
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .tabs { flex-direction: column; }
+  .filters { flex-direction: column; align-items: stretch; }
+  .filters__reset { width: 100%; }
+  .step { padding-left: 3rem; }
+}
+
+/* --------------------------------------------------------------------------
+   Sponsors
+   -------------------------------------------------------------------------- */
+
+.tier { display: flex; flex-direction: column; }
+
+/* The recommended tier is called out with a heavier Limed Spruce border rather
+   than a different background, so all four tiers keep the same visual weight. */
+.tier--featured { border-color: var(--dark); border-width: 2px; }
+
+.tier__badge {
+  align-self: flex-start;
+  margin-bottom: var(--s-3);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius);
+  background: var(--dark);
+  color: var(--light);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tier__amount {
+  display: block;
+  margin-bottom: var(--s-1);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--dark);
+}
+
+.tier__name {
+  display: block;
+  margin-bottom: var(--s-4);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tier ul { flex: 1; }
+.tier .checklist li { font-size: var(--fs-sm); }
+
+/* Sponsor logos sit on their own tile so mixed logo backgrounds still read. */
+.sponsor-wall { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4); }
+
+.sponsor-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 7rem;
+  padding: var(--s-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  font-weight: 600;
+  color: var(--muted);
+}
+.sponsor-logo img { max-height: 4.5rem; width: auto; }
+
+/* Placeholder slot, shown until real sponsors exist. */
+.sponsor-logo--empty {
+  border-style: dashed;
+  font-size: var(--fs-sm);
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .sponsor-wall { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .sponsor-wall { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sign Up | NextGen Engineering</title>
+  <meta name="description" content="Sign your student up for a free NextGen Engineering lesson, or request that we present at your school, library, or community center in the Orlando area.">
+  <link rel="canonical" href="https://nextgenengineering.org/signup.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NextGen Engineering">
+  <meta property="og:title" content="Sign Up | NextGen Engineering">
+  <meta property="og:description" content="Free engineering lessons for grades 6–12. Sign up as a student, or request a presentation for your group.">
+  <meta property="og:url" content="https://nextgenengineering.org/signup.html">
+  <meta property="og:image" content="https://nextgenengineering.org/files/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3B464A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="files/images/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="btn btn--primary visually-hidden" href="#main">Skip to content</a>
+
+  <div data-include="header"></div>
+
+  <main id="main">
+
+    <section class="section section--dark section--tight">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Get involved</span>
+          <h1>Sign up.</h1>
+          <p>
+            Everything we run is free. Pick whichever of these describes you &mdash;
+            we usually reply within a few days.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="form-card">
+
+          <div class="tabs" role="tablist" aria-label="Sign-up type">
+            <button class="tab" type="button" role="tab" id="tab-student"
+                    aria-controls="panel-student" aria-selected="true" data-form="student">
+              I&rsquo;m a student
+            </button>
+            <button class="tab" type="button" role="tab" id="tab-presentation"
+                    aria-controls="panel-presentation" aria-selected="false" data-form="presentation">
+              Present at our place
+            </button>
+          </div>
+
+          <!-- ============ Student sign-up ============ -->
+          <div class="tabpanel" id="panel-student" role="tabpanel" aria-labelledby="tab-student">
+
+            <div class="prose" style="margin-bottom: var(--s-6)">
+              <h2>Student sign-up</h2>
+              <p>
+                For students in grades 6&ndash;12 who want to join a lesson. A parent or
+                guardian needs to complete this form.
+              </p>
+            </div>
+
+            <form class="js-w3form" data-label="student" novalidate>
+              <input type="hidden" name="access_key" value="5e0a5d9a-e28c-4fcb-b5b9-926ee58a9d08">
+              <input type="hidden" name="subject" value="New Student Sign-Up — NextGen Engineering">
+              <input type="hidden" name="form_type" value="student">
+              <input type="hidden" name="from_name" value="NextGen Engineering Website">
+              <!-- Web3Forms honeypot: bots fill it, humans never see it. -->
+              <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+
+              <fieldset>
+                <legend>About the student</legend>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="s-name">Student&rsquo;s full name <span class="required-star">*</span></label>
+                    <input type="text" id="s-name" name="student_name" required autocomplete="name">
+                  </div>
+                  <div class="field">
+                    <label for="s-grade">Grade in the fall <span class="required-star">*</span></label>
+                    <select id="s-grade" name="student_grade" required>
+                      <option value="">Select a grade</option>
+                      <option>6th</option><option>7th</option><option>8th</option>
+                      <option>9th</option><option>10th</option><option>11th</option><option>12th</option>
+                    </select>
+                  </div>
+                  <div class="field field--full">
+                    <label for="s-school">School <span class="required-star">*</span></label>
+                    <input type="text" id="s-school" name="student_school" required>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Parent or guardian</legend>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="s-parent">Parent/guardian name <span class="required-star">*</span></label>
+                    <input type="text" id="s-parent" name="parent_name" required>
+                  </div>
+                  <div class="field">
+                    <label for="s-email">Parent/guardian email <span class="required-star">*</span></label>
+                    <input type="email" id="s-email" name="parent_email" required autocomplete="email">
+                  </div>
+                  <div class="field">
+                    <label for="s-phone">Parent/guardian phone</label>
+                    <input type="tel" id="s-phone" name="parent_phone" autocomplete="tel">
+                    <p class="field__hint">Optional, but it speeds up scheduling.</p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Interests</legend>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="s-interest">Which area interests them most?</label>
+                    <select id="s-interest" name="area_of_interest">
+                      <option value="">No preference</option>
+                      <option>Mechanical</option>
+                      <option>Electrical</option>
+                      <option>Software</option>
+                      <option>CAD</option>
+                      <option>Robotics</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="s-heard">How did you hear about us?</label>
+                    <select id="s-heard" name="heard_about_us">
+                      <option value="">Select one</option>
+                      <option>School or teacher</option>
+                      <option>Friend or family</option>
+                      <option>Social media</option>
+                      <option>Community event</option>
+                      <option>Search engine</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="field field--full">
+                    <label for="s-experience">Any prior experience?</label>
+                    <textarea id="s-experience" name="prior_experience"
+                              placeholder="Robotics club, a 3D printer at home, some Scratch — anything at all. &quot;None&quot; is a perfectly good answer."></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Permissions</legend>
+                <div class="check-field">
+                  <input type="checkbox" id="s-consent" name="parent_consent" value="Yes" required>
+                  <label for="s-consent">
+                    I am the parent or legal guardian of this student and consent to their
+                    participation in NextGen Engineering programs. <span class="required-star">*</span>
+                  </label>
+                </div>
+                <div class="check-field">
+                  <input type="checkbox" id="s-photo" name="photo_release" value="Yes">
+                  <label for="s-photo">
+                    I give permission for photos of my student taken during sessions to be used
+                    in NextGen Engineering materials. (Optional &mdash; declining changes nothing
+                    about participation.)
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="js-form-status" role="status" aria-live="polite"></div>
+
+              <button class="btn btn--primary btn--lg js-submit" type="submit">Submit sign-up</button>
+              <p class="field__hint">Fields marked <span class="required-star">*</span> are required.</p>
+            </form>
+          </div>
+
+          <!-- ============ Presentation request ============ -->
+          <div class="tabpanel" id="panel-presentation" role="tabpanel" aria-labelledby="tab-presentation" hidden>
+
+            <div class="prose" style="margin-bottom: var(--s-6)">
+              <h2>Request a presentation</h2>
+              <p>
+                For teachers, librarians, club sponsors, and community organizers in the
+                Orlando area. We bring the materials and the instructors, free of charge.
+              </p>
+            </div>
+
+            <form class="js-w3form" data-label="presentation" novalidate>
+              <input type="hidden" name="access_key" value="5e0a5d9a-e28c-4fcb-b5b9-926ee58a9d08">
+              <input type="hidden" name="subject" value="New Presentation Request — NextGen Engineering">
+              <input type="hidden" name="form_type" value="presentation">
+              <input type="hidden" name="from_name" value="NextGen Engineering Website">
+              <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+
+              <fieldset>
+                <legend>Your contact info</legend>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="p-name">Your name <span class="required-star">*</span></label>
+                    <input type="text" id="p-name" name="contact_name" required autocomplete="name">
+                  </div>
+                  <div class="field">
+                    <label for="p-role">Your role <span class="required-star">*</span></label>
+                    <input type="text" id="p-role" name="contact_role" required
+                           placeholder="Teacher, librarian, club sponsor…">
+                  </div>
+                  <div class="field">
+                    <label for="p-email">Email <span class="required-star">*</span></label>
+                    <input type="email" id="p-email" name="contact_email" required autocomplete="email">
+                  </div>
+                  <div class="field">
+                    <label for="p-phone">Phone</label>
+                    <input type="tel" id="p-phone" name="contact_phone" autocomplete="tel">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Your organization</legend>
+                <div class="form-grid">
+                  <div class="field field--full">
+                    <label for="p-org">Organization name <span class="required-star">*</span></label>
+                    <input type="text" id="p-org" name="organization" required>
+                  </div>
+                  <div class="field field--full">
+                    <label for="p-address">Address <span class="required-star">*</span></label>
+                    <input type="text" id="p-address" name="address" required
+                           placeholder="Street, city, ZIP">
+                    <p class="field__hint">We currently serve the greater Orlando area.</p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>The session</legend>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="p-grades">Grade level of the audience <span class="required-star">*</span></label>
+                    <select id="p-grades" name="audience_grades" required>
+                      <option value="">Select one</option>
+                      <option>Grades 6–8</option>
+                      <option>Grades 9–12</option>
+                      <option>Mixed 6–12</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="p-count">Approximate number of students <span class="required-star">*</span></label>
+                    <input type="number" id="p-count" name="student_count" min="1" max="500" required>
+                  </div>
+                  <div class="field">
+                    <label for="p-dates">Preferred dates</label>
+                    <input type="text" id="p-dates" name="preferred_dates"
+                           placeholder="e.g. any Friday in October">
+                  </div>
+                  <div class="field">
+                    <label for="p-length">Session length</label>
+                    <select id="p-length" name="session_length">
+                      <option value="">Flexible</option>
+                      <option>About 45 minutes (one class period)</option>
+                      <option>About 90 minutes</option>
+                      <option>Half day</option>
+                      <option>Full day</option>
+                    </select>
+                  </div>
+                  <div class="field field--full">
+                    <label for="p-topics">Topics you&rsquo;re interested in</label>
+                    <textarea id="p-topics" name="topics_of_interest"
+                              placeholder="Anything from our lesson library, or tell us what you need and we'll build it."></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Your space</legend>
+                <div class="form-grid">
+                  <div class="field field--full">
+                    <label for="p-equipment">What&rsquo;s available in the room?</label>
+                    <textarea id="p-equipment" name="equipment_available"
+                              placeholder="Projector? Wi-Fi? Tables? Student laptops or Chromebooks? Power outlets?"></textarea>
+                    <p class="field__hint">None of this is required &mdash; it just helps us plan what to bring.</p>
+                  </div>
+                  <div class="field field--full">
+                    <label for="p-notes">Anything else we should know?</label>
+                    <textarea id="p-notes" name="notes"></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="js-form-status" role="status" aria-live="polite"></div>
+
+              <button class="btn btn--primary btn--lg js-submit" type="submit">Send request</button>
+              <p class="field__hint">Fields marked <span class="required-star">*</span> are required.</p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="footer"></div>
+
+  <script src="script.js"></script>
+  <script src="forms.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html><meta charset="utf-8"><body style="margin:0;font:11px monospace"><pre id="out">…</pre>
+<script>
+const PAGES=['index.html','lessons.html','signup.html','sponsors.html'];
+const WIDTHS=[375,768,1440];
+const L=[];
+function px(v){return Math.round(parseFloat(v));}
+function probe(page,width){return new Promise(res=>{
+ const f=document.createElement('iframe');
+ f.style.cssText=`width:${width}px;height:900px;border:0;position:absolute;left:-9999px`;
+ f.src=page;
+ f.onload=()=>setTimeout(()=>{
+  try{
+   const d=f.contentDocument,w=f.contentWindow;
+   L.push(`\n=== ${page} @${width} ===`);
+   const cont=d.querySelector('main .container');
+   if(cont)L.push(`container pad-inline ${px(w.getComputedStyle(cont).paddingLeft)}`);
+   const secs=[...d.querySelectorAll('main > section')];
+   let prev=null;
+   secs.forEach((s,i)=>{
+    const cs=w.getComputedStyle(s), r=s.getBoundingClientRect();
+    const cls=(s.className||'(none)').replace(/\s+/g,'.');
+    const gap=prev? Math.round(r.top-prev):0;
+    L.push(` [${i}] ${cls.slice(0,34)} padT=${px(cs.paddingTop)} padB=${px(cs.paddingBottom)} h=${Math.round(r.height)}${gap?` gapAbove=${gap}`:''}`);
+    prev=r.bottom;
+   });
+   const head=d.querySelector('.section-head');
+   if(head)L.push(` section-head mb=${px(w.getComputedStyle(head).marginBottom)}`);
+   const br=d.querySelector('.btn-row');
+   if(br)L.push(` btn-row gap=${px(w.getComputedStyle(br).gap)} mt=${px(w.getComputedStyle(br).marginTop)}`);
+   const grid=d.querySelector('.grid');
+   if(grid){const g=w.getComputedStyle(grid);L.push(` grid cols=${g.gridTemplateColumns.split(' ').length} gap=${px(g.gap)}`);}
+   const card=d.querySelector('.card');
+   if(card)L.push(` card pad=${px(w.getComputedStyle(card).paddingTop)}/${px(w.getComputedStyle(card).paddingLeft)}`);
+   const fld=d.querySelector('.field');
+   if(fld)L.push(` field mb=${px(w.getComputedStyle(fld).marginBottom)}`);
+   const ftr=d.querySelector('.site-footer');
+   if(ftr){const c=w.getComputedStyle(ftr);L.push(` footer padT=${px(c.paddingTop)} padB=${px(c.paddingBottom)}`);}
+  }catch(e){L.push(`${page}@${width} ERR ${e.message}`);}
+  f.remove();res();},400);
+ document.body.appendChild(f);});}
+(async()=>{for(const p of PAGES)for(const w of WIDTHS)await probe(p,w);
+ document.getElementById('out').textContent=L.join('\n');})();
+</script>
