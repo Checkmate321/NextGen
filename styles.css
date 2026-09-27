@@ -626,6 +626,7 @@ a.card:hover, .card--link:hover {
 
   .card, .lesson-card__body, .form-status, .empty-state { padding: var(--s-4); }
   .filters { padding: var(--s-4); }
+  .member__avatar:has(img) { --bleed: calc(var(--s-4) + 1px); }
 
   /* Scale the whole motif down together so it stays in proportion. */
   :root { --chamfer-sm: 1.15rem; --chamfer-md: 1.6rem; --chamfer-lg: 2rem; }
@@ -781,6 +782,18 @@ a.card:hover, .card--link:hover {
 }
 
 .member__avatar { position: relative; overflow: hidden; }
+
+/* Photo cards: a full-bleed 4:5 portrait instead of the small initials tile.
+   Negative margins pull it over the card's padding and 1px border, so the
+   card's own top-left cut clips the photo; the photo keeps its bottom-right cut. */
+.member__avatar:has(img) {
+  --bleed: calc(var(--s-5) + 1px);
+  width: calc(100% + 2 * var(--bleed)); height: auto;
+  aspect-ratio: 4 / 5;
+  margin: calc(-1 * var(--bleed)) calc(-1 * var(--bleed)) var(--s-4);
+  border: 0;
+  border-radius: 0 var(--radius-lg) 0 0;
+}
 
 .member__avatar img {
   position: absolute;
