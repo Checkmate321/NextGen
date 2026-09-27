@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NextGen Engineering — sign-up page
+   NextGen Engineering: sign up page
    Tab switching plus Web3Forms submission with inline success/error states.
    ========================================================================== */
 
@@ -8,22 +8,22 @@
 
   var ENDPOINT = 'https://api.web3forms.com/submit';
 
-  var EMAIL = 'hello@nextgenengineering.org';
+  var EMAIL = 'nextgenengofficial@gmail.com';
   var MAILTO = '<a href="mailto:' + EMAIL + '">' + EMAIL + '</a>';
 
   var CONFIRMATIONS = {
     student: {
-      heading: 'Thanks — we got the sign-up.',
+      heading: 'Thanks, we got the sign up.',
       message: 'We’ll email the parent or guardian address you gave us within a few days ' +
                'with next steps and upcoming session dates.'
     },
     presentation: {
-      heading: 'Thanks — we got your request.',
+      heading: 'Thanks, we got your request.',
       message: 'We’ll be in touch within a few days to talk through dates, topics, and what ' +
-               'we’ll bring. If it’s time-sensitive, email us directly at ' + MAILTO + '.'
+               'we’ll bring. If it’s time sensitive, email us directly at ' + MAILTO + '.'
     },
     sponsor: {
-      heading: 'Thanks — we got your inquiry.',
+      heading: 'Thanks, we got your inquiry.',
       message: 'We’ll follow up within a few days with our EIN, a W-9, and a written ' +
                'acknowledgment for your records. Questions in the meantime? Email us at ' +
                MAILTO + '.'
@@ -87,7 +87,7 @@
         e.preventDefault();
 
         // novalidate is set so we can control when the browser's own messages
-        // appear — this triggers them on submit rather than on every blur.
+        // appear. This triggers them on submit rather than on every blur.
         if (!form.checkValidity()) {
           form.reportValidity();
           var firstBad = form.querySelector(':invalid');
@@ -114,7 +114,7 @@
             var heading = confirmation.heading;
             var message = confirmation.message;
 
-            // Replace the form entirely — there is nothing left to do here.
+            // Replace the form entirely; there is nothing left to do here.
             form.innerHTML = '';
             form.appendChild(status);
             showStatus(status, 'success', heading, message);

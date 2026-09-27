@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NextGen Engineering — global stylesheet
+   NextGen Engineering: global stylesheet
    Palette is three colors only. Every value below resolves to one of them.
    ========================================================================== */
 
@@ -15,7 +15,7 @@
   /* dark + light */
   --dark-soft:      color-mix(in srgb, var(--dark) 88%, var(--light));
   --muted:          color-mix(in srgb, var(--dark) 70%, var(--light));
-  /* translucent inks — one per hue, alpha is the only variable */
+  /* translucent inks: one per hue, alpha is the only variable */
   --border:         color-mix(in srgb, var(--dark) 14%, transparent);
   --border-on-dark: color-mix(in srgb, var(--light) 22%, transparent);
   --shadow-ink:     color-mix(in srgb, var(--dark) 10%, transparent);
@@ -113,7 +113,7 @@ li + li { margin-top: var(--s-2); }
 
 hr { border: 0; border-top: 1px solid var(--border); margin: var(--s-6) 0; }
 
-/* Space Grotesk carries the whole site — buttons and fields inherit it too. */
+/* Space Grotesk carries the whole site; buttons and fields inherit it too. */
 button, input, select, textarea { font: inherit; color: inherit; }
 
 /* Keyboard focus is visible everywhere. */
@@ -155,7 +155,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .section--dark a:hover { color: var(--light); }
 
 /* Same ground as <body>. The band exists for rhythm/padding, not for a
-   color change — cards are what carry the tint here. */
+   color change; cards are what carry the tint here. */
 .section--surface { background: var(--light); }
 
 .section-head { max-width: 62ch; margin-bottom: var(--s-6); }
@@ -443,7 +443,7 @@ a.card:hover, .card--link:hover {
 }
 .nav__link:hover { color: var(--light); }
 
-/* Active page marker — an underline plus weight, since the palette has no
+/* Active page marker: an underline plus weight, since the palette has no
    accent color to tint the current link with. */
 .nav__link.is-active { font-weight: 700; }
 .nav__link.is-active::after {
@@ -490,7 +490,7 @@ a.card:hover, .card--link:hover {
 .site-footer a { color: var(--light); text-decoration: none; }
 .site-footer a:hover { color: var(--light); text-decoration: underline; }
 
-/* One single line at every width — contact, copyright, nonprofit status.
+/* One single line at every width: contact, copyright, nonprofit status.
    Sizes are in cqi (1cqi = 1% of .footer__inner's width), so the row is a
    fixed multiple of the container no matter the screen: it scales down
    instead of wrapping. The min() caps growth on wide screens. */
@@ -523,7 +523,7 @@ a.card:hover, .card--link:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Forms (base styles — Phase 4 builds on these)
+   Forms (base styles; Phase 4 builds on these)
    -------------------------------------------------------------------------- */
 
 .field { margin-bottom: var(--s-4); }
@@ -557,7 +557,7 @@ a.card:hover, .card--link:hover {
 
 .required-star { color: var(--dark); }
 
-/* Web3Forms honeypot — must stay in the DOM but never be seen. */
+/* Web3Forms honeypot: must stay in the DOM but never be seen. */
 .botcheck { display: none !important; }
 
 /* --------------------------------------------------------------------------
@@ -643,7 +643,7 @@ a.card:hover, .card--link:hover {
 }
 
 /* ==========================================================================
-   Page components (Phases 2–5)
+   Page components (Phases 2 to 5)
    ========================================================================== */
 
 /* --- Hero --------------------------------------------------------------- */
@@ -672,7 +672,7 @@ a.card:hover, .card--link:hover {
 
 .hero .btn-row { margin-top: var(--s-6); }
 
-/* The mark doubles as the hero illustration — a rotating CAD model, with the
+/* The mark doubles as the hero illustration: a rotating CAD model, with the
    flat SVG standing in as poster and as the no-JS fallback. */
 .hero__art { justify-self: center; width: min(520px, 100%); color: var(--light); }
 .hero__art svg { width: 100%; height: auto; opacity: 0.9; }
@@ -692,7 +692,7 @@ a.card:hover, .card--link:hover {
   --progress-mask: transparent;
 }
 
-/* The poster SVG has to be positioned by us — the slot is a bare container. */
+/* The poster SVG has to be positioned by us; the slot is a bare container. */
 .hero__model svg[slot="poster"] {
   width: 100%;
   height: 100%;

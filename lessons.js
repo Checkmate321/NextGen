@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NextGen Engineering — lesson library
+   NextGen Engineering: lesson library
    One JSON file feeds three views: the featured strip on the home page,
    the filterable grid on lessons.html, and the detail page on lesson.html.
    ========================================================================== */
@@ -32,14 +32,14 @@
   }
 
   function gradeLabel(band) {
-    return 'Grades ' + band.replace('-', '–');
+    return 'Grades ' + band.replace('-', ' to ');
   }
 
   function thumb(lesson) {
     if (lesson.thumbnail) {
       return '<img src="' + esc(lesson.thumbnail) + '" alt="" loading="lazy">';
     }
-    // No artwork yet — fall back to the logo mark so the card still reads
+    // No artwork yet, so fall back to the logo mark so the card still reads
     // as designed rather than broken.
     return '<svg viewBox="0 0 600 600" aria-hidden="true"><use href="#nextgen-mark"></use></svg>';
   }
@@ -86,7 +86,7 @@
       grid.innerHTML = picks.slice(0, limit).map(cardHTML).join('');
     }).catch(function (err) {
       console.error('[NextGen]', err);
-      showError(grid, 'Run the site through a local server — fetch() cannot read files over file://.');
+      showError(grid, 'Run the site through a local server, because fetch() cannot read files over file://.');
     });
   }
 
@@ -180,7 +180,7 @@
     }).catch(function (err) {
       console.error('[NextGen]', err);
       count.textContent = '';
-      showError(grid, 'Run the site through a local server — fetch() cannot read files over file://.');
+      showError(grid, 'Run the site through a local server, because fetch() cannot read files over file://.');
     });
   }
 

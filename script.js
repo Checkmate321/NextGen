@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NextGen Engineering — shared site behavior
+   NextGen Engineering: shared site behavior
    Loads the logo sprite + header.html / footer.html, then wires up the nav.
    Requires a local server: fetch() does not work over file://
    ========================================================================== */
@@ -124,7 +124,7 @@
 
   // model-viewer has no reduced-motion handling of its own, so a spinning logo
   // would keep spinning for people who asked the OS to stop animation. The
-  // model stays interactive either way — dragging it is a deliberate act.
+  // model stays interactive either way; dragging it is a deliberate act.
   function initHeroModel() {
     var model = document.querySelector('.hero__model');
     if (!model) return;

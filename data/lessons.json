@@ -21,17 +21,17 @@
       "materials": [
         "A laptop or Chromebook with a modern browser",
         "A free Onshape account (education accounts are free)",
-        "A mouse — trackpads make CAD painful",
+        "A mouse, since trackpads make CAD painful",
         "Optional: access to a 3D printer for the final print"
       ],
       "steps": [
         {
           "title": "Set up the document",
-          "body": "Create a new Onshape document and name it \"Phone Stand\". Point out the three default planes — Top, Front, and Right. Everything in CAD starts by choosing which plane you are drawing on, and picking the wrong one is the single most common beginner mistake."
+          "body": "Create a new Onshape document and name it \"Phone Stand\". Point out the three default planes: Top, Front, and Right. Everything in CAD starts by choosing which plane you are drawing on, and picking the wrong one is the single most common beginner mistake."
         },
         {
           "title": "Sketch the profile",
-          "body": "Start a sketch on the Front plane. Draw the side profile of the stand as a closed shape: a base, a back support leaning at roughly 60 degrees, and a small lip at the front to catch the phone. Do not worry about exact sizes yet — just get the shape closed."
+          "body": "Start a sketch on the Front plane. Draw the side profile of the stand as a closed shape: a base, a back support leaning at roughly 60 degrees, and a small lip at the front to catch the phone. Do not worry about exact sizes yet; just get the shape closed."
         },
         {
           "title": "Constrain and dimension",
@@ -39,7 +39,7 @@
         },
         {
           "title": "Extrude to a solid",
-          "body": "Exit the sketch and extrude the profile 70 mm wide. The flat drawing becomes a solid part. Rotate it to look at it from every angle — students almost always find something they did not expect on the first try."
+          "body": "Exit the sketch and extrude the profile 70 mm wide. The flat drawing becomes a solid part. Rotate it to look at it from every angle. Students almost always find something they did not expect on the first try."
         },
         {
           "title": "Test the fit and revise",
@@ -47,7 +47,7 @@
         },
         {
           "title": "Export for printing",
-          "body": "Right-click the part in the parts list and export as STL, binary, with fine resolution. If a printer is available, slice it and start the print. If not, the file is still theirs to take home."
+          "body": "Right click the part in the parts list and export as STL, binary, with fine resolution. If a printer is available, slice it and start the print. If not, the file is still theirs to take home."
         }
       ],
       "downloads": [],
@@ -82,23 +82,23 @@
       "steps": [
         {
           "title": "Wire the LED",
-          "body": "Long leg of the LED to pin 13 through the 220Ω resistor, short leg to GND. Ask why the resistor is there before explaining it — someone usually guesses correctly. Without it the LED draws too much current and burns out, sometimes visibly, which makes the lesson memorable."
+          "body": "Long leg of the LED to pin 13 through the 220Ω resistor, short leg to GND. Ask why the resistor is there before explaining it; someone usually guesses correctly. Without it the LED draws too much current and burns out, sometimes visibly, which makes the lesson memorable."
         },
         {
           "title": "Upload Blink",
-          "body": "Open File → Examples → Basics → Blink and upload. Once it works, have students change the delay values and re-upload. Watching the blink rate change from a number they typed is the first time the code feels connected to a physical object."
+          "body": "Open File → Examples → Basics → Blink and upload. Once it works, have students change the delay values and reupload. Watching the blink rate change from a number they typed is the first time the code feels connected to a physical object."
         },
         {
           "title": "Add the light sensor",
-          "body": "Build a voltage divider: 5V to one leg of the photoresistor, the other leg to both A0 and one leg of the 10kΩ resistor, and the far end of that resistor to GND. Draw this on the board as a diagram first — breadboards are much easier to wire once students can see the circuit as a loop."
+          "body": "Build a voltage divider: 5V to one leg of the photoresistor, the other leg to both A0 and one leg of the 10kΩ resistor, and the far end of that resistor to GND. Draw this on the board as a diagram first, since breadboards are much easier to wire once students can see the circuit as a loop."
         },
         {
           "title": "Read the sensor",
-          "body": "Write a short sketch using analogRead(A0) and Serial.println() to print the value ten times a second. Open the Serial Monitor and have students cover the sensor with a hand. Numbers move. Have them record the value in a bright room and in a covered one — those two numbers become the threshold in the next step."
+          "body": "Write a short sketch using analogRead(A0) and Serial.println() to print the value ten times a second. Open the Serial Monitor and have students cover the sensor with a hand. Numbers move. Have them record the value in a bright room and in a covered one. Those two numbers become the threshold in the next step."
         },
         {
           "title": "Make it react",
-          "body": "Add an if statement: when the reading drops below the threshold they measured, turn the LED on; otherwise turn it off. They have just built an automatic night light. Point out that this is the actual pattern behind most embedded systems — read a sensor, compare it, act."
+          "body": "Add an if statement: when the reading drops below the threshold they measured, turn the LED on; otherwise turn it off. They have just built an automatic night light. Point out that this is the actual pattern behind most embedded systems: read a sensor, compare it, act."
         },
         {
           "title": "Break it on purpose",
@@ -119,15 +119,15 @@
       "difficulty": "Beginner",
       "featured": true,
       "thumbnail": null,
-      "summary": "A no-electronics lesson on the trade between speed and torque. Students calculate ratios on paper, then feel the difference by hand with a simple gear train.",
+      "summary": "A no electronics lesson on the trade between speed and torque. Students calculate ratios on paper, then feel the difference by hand with a simple gear train.",
       "objectives": [
         "Calculate a gear ratio from tooth counts",
-        "Explain the trade-off between speed and torque",
-        "Predict the output speed of a two-stage gear train",
+        "Explain the trade off between speed and torque",
+        "Predict the output speed of a two stage gear train",
         "Choose a ratio to fit a stated design goal"
       ],
       "materials": [
-        "A gear set — LEGO Technic, VEX, or 3D-printed spur gears all work",
+        "A gear set: LEGO Technic, VEX, or 3D printed spur gears all work",
         "An axle and a simple frame to hold two gears in mesh",
         "Paper and pencil",
         "Optional: a small weight to lift, and string"
@@ -135,7 +135,7 @@
       "steps": [
         {
           "title": "Count teeth, find the ratio",
-          "body": "Mesh a small gear with a large one. Count the teeth on each. The ratio is driven teeth divided by driving teeth. Have students turn the small gear one full rotation and count how far the big one goes — the number they measure should match the number they calculated."
+          "body": "Mesh a small gear with a large one. Count the teeth on each. The ratio is driven teeth divided by driving teeth. Have students turn the small gear one full rotation and count how far the big one goes. The number they measure should match the number they calculated."
         },
         {
           "title": "Feel the trade",
@@ -143,11 +143,11 @@
         },
         {
           "title": "Do the math",
-          "body": "If the motor spins at 100 RPM and the ratio is 3:1, the output is 33 RPM with roughly three times the torque. Work several examples on paper. Emphasize that gears do not create energy — you are trading one thing for the other, always."
+          "body": "If the motor spins at 100 RPM and the ratio is 3:1, the output is 33 RPM with roughly three times the torque. Work several examples on paper. Emphasize that gears do not create energy; you are trading one thing for the other, always."
         },
         {
           "title": "Stack two stages",
-          "body": "Build a two-stage train and have students predict the overall ratio before turning it. Ratios multiply: 3:1 followed by 4:1 gives 12:1. Then verify by counting rotations. Predicting first, then testing, is the habit worth building here."
+          "body": "Build a two stage train and have students predict the overall ratio before turning it. Ratios multiply: 3:1 followed by 4:1 gives 12:1. Then verify by counting rotations. Predicting first, then testing, is the habit worth building here."
         },
         {
           "title": "Design to a goal",
@@ -182,7 +182,7 @@
       "steps": [
         {
           "title": "Draw a square the tedious way",
-          "body": "Import turtle and write eight lines: forward, right, forward, right, and so on. It works, and it is obviously annoying. Let them feel the annoyance — it motivates everything that follows."
+          "body": "Import turtle and write eight lines: forward, right, forward, right, and so on. It works, and it is obviously annoying. Let them feel the annoyance, because it motivates everything that follows."
         },
         {
           "title": "Replace it with a loop",
@@ -190,7 +190,7 @@
         },
         {
           "title": "Find the pattern",
-          "body": "Ask what angle makes a hexagon, then an octagon. Guide them to 360 divided by the number of sides. This is a genuinely nice moment — they derive the rule rather than being told it."
+          "body": "Ask what angle makes a hexagon, then an octagon. Guide them to 360 divided by the number of sides. This is a genuinely nice moment: they derive the rule rather than being told it."
         },
         {
           "title": "Write a function",
@@ -198,7 +198,7 @@
         },
         {
           "title": "Make something of your own",
-          "body": "Open-ended build time: a spiral, a flower, a starburst. Encourage stacking their function inside loops with a small rotation each pass. The results are genuinely impressive for a fifty-minute first session."
+          "body": "Open ended build time: a spiral, a flower, a starburst. Encourage stacking their function inside loops with a small rotation each pass. The results are genuinely impressive for a fifty minute first session."
         }
       ],
       "downloads": [],
@@ -218,7 +218,7 @@
       "summary": "Most first prints fail for the same handful of reasons. Students learn overhangs, tolerances, and layer orientation, then redesign a failing part until it succeeds.",
       "objectives": [
         "Predict where a part will need support material",
-        "Apply the 45-degree overhang rule when designing",
+        "Apply the 45 degree overhang rule when designing",
         "Choose a print orientation based on where loads are applied",
         "Design a clearance fit between two mating parts"
       ],
@@ -226,7 +226,7 @@
         "Laptop with Onshape or Fusion 360",
         "Slicer software (PrusaSlicer, Cura, or Bambu Studio)",
         "Access to an FDM 3D printer",
-        "A few deliberately failed prints to pass around — stringing, warping, collapsed overhangs"
+        "A few deliberately failed prints to pass around: stringing, warping, collapsed overhangs"
       ],
       "steps": [
         {
@@ -234,8 +234,8 @@
           "body": "Pass around the failed prints with no explanation and ask what went wrong. Students will identify most of the symptoms on their own. Only then name them: overhang collapse, warping, insufficient clearance, weak layer adhesion."
         },
         {
-          "title": "The 45-degree rule",
-          "body": "Anything overhanging more than about 45 degrees from vertical needs support. Model a simple bracket with a steep overhang, then redesign it with a chamfer so it prints support-free. Compare the two in the slicer preview side by side."
+          "title": "The 45 degree rule",
+          "body": "Anything overhanging more than about 45 degrees from vertical needs support. Model a simple bracket with a steep overhang, then redesign it with a chamfer so it prints support free. Compare the two in the slicer preview side by side."
         },
         {
           "title": "Orientation and strength",
@@ -257,18 +257,18 @@
 
     {
       "id": "line-following-robot",
-      "title": "Build a Line-Following Robot",
+      "title": "Build a Line Following Robot",
       "subject": "Robotics",
       "gradeBand": "9-12",
       "duration": "2 hours",
       "difficulty": "Intermediate",
       "featured": false,
       "thumbnail": null,
-      "summary": "The capstone session. Students combine sensors, motors, and control logic into a robot that drives itself around a taped course — and then tune it until it stops falling off.",
+      "summary": "The capstone session. Students combine sensors, motors, and control logic into a robot that drives itself around a taped course, and then tune it until it stops falling off.",
       "objectives": [
         "Wire a motor driver and control two motors independently",
         "Calibrate reflectance sensors for a specific surface",
-        "Implement proportional control and explain why bang-bang control oscillates",
+        "Implement proportional control and explain why bang bang control oscillates",
         "Systematically tune a control loop by changing one variable at a time"
       ],
       "materials": [
@@ -276,22 +276,22 @@
         "L298N or TB6612FNG motor driver",
         "2 DC gearmotors with wheels, plus a caster",
         "2 or 3 IR reflectance sensors",
-        "Chassis (laser-cut, 3D-printed, or cardboard)",
+        "Chassis (laser cut, 3D printed, or cardboard)",
         "Battery pack and jumper wires",
         "Black electrical tape and a light floor for the course"
       ],
       "steps": [
         {
           "title": "Motors first, alone",
-          "body": "Before any sensors, get both motors spinning forward, backward, and at different speeds through the driver. Confirm which direction is which — reversed motor wiring is responsible for most of the confusion later, and it is trivial to find now."
+          "body": "Before any sensors, get both motors spinning forward, backward, and at different speeds through the driver. Confirm which direction is which, because reversed motor wiring is responsible for most of the confusion later, and it is trivial to find now."
         },
         {
           "title": "Calibrate the sensors",
           "body": "Print sensor readings over black tape and over bare floor. Those two numbers differ by room and by surface, so they must be measured, not assumed. The midpoint becomes the line threshold."
         },
         {
-          "title": "Bang-bang control",
-          "body": "Write the naive version: if the left sensor sees the line, turn left; if the right does, turn right. It works, badly — the robot wobbles down the course. Let them run it and see the oscillation before offering a fix."
+          "title": "Bang bang control",
+          "body": "Write the naive version: if the left sensor sees the line, turn left; if the right does, turn right. It works, badly: the robot wobbles down the course. Let them run it and see the oscillation before offering a fix."
         },
         {
           "title": "Proportional control",
@@ -299,11 +299,11 @@
         },
         {
           "title": "Tune it",
-          "body": "Have students adjust the proportional gain and base speed one at a time, recording lap times. Too low and it drifts wide on turns; too high and the wobble returns. Insist on changing one variable per run — that discipline is the actual engineering lesson."
+          "body": "Have students adjust the proportional gain and base speed one at a time, recording lap times. Too low and it drifts wide on turns; too high and the wobble returns. Insist on changing one variable per run; that discipline is the actual engineering lesson."
         },
         {
           "title": "Race",
-          "body": "Time each robot on the course. Then change the course — add a sharper turn — and watch which tuning strategies generalize. Groups that tuned carefully rather than by trial and error tend to win, which makes the point better than any lecture."
+          "body": "Time each robot on the course. Then change the course (add a sharper turn) and watch which tuning strategies generalize. Groups that tuned carefully rather than by trial and error tend to win, which makes the point better than any lecture."
         }
       ],
       "downloads": [],
